@@ -1,5 +1,6 @@
 import { registerUser } from "../../server/actions/user";
 import { redirect } from "next/navigation";
+import RegisterClientScript from "./RegisterClientScript";
 
 export default function RegisterPage({ searchParams }: { searchParams?: { error?: string } }) {
   async function handleRegister(formData: FormData) {
@@ -72,22 +73,4 @@ export default function RegisterPage({ searchParams }: { searchParams?: { error?
       <RegisterClientScript />
     </div>
   );
-}
-
-// Client component to handle token in query param
-'use client';
-import { useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-
-function RegisterClientScript() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  useEffect(() => {
-    const token = searchParams.get("token");
-    if (token) {
-      localStorage.setItem("jwt", token);
-      router.replace("/");
-    }
-  }, [searchParams, router]);
-  return null;
 } 
