@@ -22,3 +22,17 @@ model Sample {
 
   @@map("samples")
 }
+
+// User roles
+enum Role {
+  ADMIN
+  CUSTOMER
+}
+
+model User {
+  id        Int    @id @default(autoincrement())
+  name      String
+  email     String @unique
+  password  String
+  role      Role
+}

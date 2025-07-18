@@ -1,5 +1,5 @@
 import SampleView from "@/components/sample-view";
-import { prisma } from "@/lib/prisma";
+import { prisma } from "../server/utils/prisma";
 
 async function Home() {
   const samples = await prisma.sample.findMany();
